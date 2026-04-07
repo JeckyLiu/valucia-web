@@ -1,0 +1,36 @@
+/* VALUCIA Design Tokens */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* === 马卡龙主色板 === */
+  --color-lavender: #B693F8;
+  --color-mint:     #5ECFAB;
+  --color-peach:    #FF9A7B;
+  --color-sky:      #5BB8F5;
+  --color-lemon:    #FFD166;
+  --color-blossom:  #FF85A1;
+
+  /* === 中性色 === */
+  --color-cream:  #FFF8F4;
+  --color-ink:    #1A1128;
+  --color-smoke:  #6E6880;
+  --color-glass:  rgba(255, 255, 255, 0.6);
+
+  /* === 渐变 === */
+  --grad-brand: linear-gradient(135deg, #B693F8 0%, #FF85A1 50%, #FFD166 100%);
+  --grad-tech:  linear-gradient(135deg, #5BB8F5 0%, #5ECFAB 100%);
+  --grad-warm:  linear-gradient(135deg, #FFD166 0%, #FF9A7B 50%, #FF85A1 100%);
+  --grad-space: linear-gradient(135deg, #1A1128 0%, #2A1B4E 40%, #5BB8F5 100%);
+
+  /* === 圆角 === */
+  --radius-card:   28px;
+  --radius-button: 40px;
+  --radius-image:  20px;
+  --radius-pill:   100px;
+
+  /* === 阴影 === */
+  --shadow-card:       0 8px 32px rgba(182, 147, 248, 0.15);
+  --shadow-card-hover: 0 20px 48px rgba(182, 147, 248, 0.30);
+  --shadow-button:     0 4px 20px rgba(255, 133, 161, 0.40);
+}
