@@ -28,7 +28,7 @@ function Counter({ target, suffix, label, color, desc }: { target: number; suffi
   }, [target])
   return (
     <div ref={ref}>
-      <div style={{ fontFamily:"'AlibabaPuHuiTi','PingFang SC',sans-serif", fontSize:'clamp(3.5rem,7vw,5.5rem)', fontWeight:800, color, lineHeight:1, letterSpacing:'-0.03em' }}>
+      <div style={{ fontFamily:"'AlibabaPuHuiTi','PingFang SC',sans-serif", fontSize:'clamp(3rem,7vw,5.5rem)', fontWeight:800, color, lineHeight:1, letterSpacing:'-0.03em' }}>
         {count}<span style={{ fontSize:'0.55em' }}>{suffix}</span>
       </div>
       <div style={{ fontWeight:700, fontSize:'1rem', color:'#1A1128', marginTop:'0.375rem' }}>{label}</div>
@@ -47,7 +47,6 @@ const features = [
 export default function StatsSection() {
   return (
     <section style={{ background:'linear-gradient(160deg, #F0EAFF 0%, #FFF0F5 50%, #E8F8F3 100%)', padding:'6rem 2rem', position:'relative', overflow:'hidden' }}>
-      {/* Decorative blobs */}
       <div style={{ position:'absolute', width:'500px', height:'500px', top:'-150px', right:'-100px', background:'radial-gradient(circle, rgba(182,147,248,0.25) 0%, transparent 70%)', borderRadius:'50%', pointerEvents:'none' }} />
       <div style={{ position:'absolute', width:'400px', height:'400px', bottom:'-120px', left:'-80px', background:'radial-gradient(circle, rgba(94,207,171,0.2) 0%, transparent 70%)', borderRadius:'50%', pointerEvents:'none' }} />
 
@@ -64,24 +63,24 @@ export default function StatsSection() {
         </div>
 
         {/* Stats row */}
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'0', marginBottom:'4rem', background:'rgba(255,255,255,0.7)', borderRadius:'28px', border:'1px solid rgba(182,147,248,0.18)', overflow:'hidden' }}>
+        <div className="stats-row" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'0', marginBottom:'4rem', background:'rgba(255,255,255,0.7)', borderRadius:'28px', border:'1px solid rgba(182,147,248,0.18)', overflow:'hidden' }}>
           {[
             { target:8, suffix:'+', label:'核心AI系统', desc:'覆盖IP商业化全链路', color:'#B693F8' },
             { target:3, suffix:'大', label:'全球核心市场', desc:'亚太 · 欧美 · 中东', color:'#5ECFAB' },
             { target:99, suffix:'+', label:'顶级IP授权', desc:'持续扩充中', color:'#FF85A1' },
           ].map((s, i) => (
-            <div key={i} style={{ padding:'2.5rem 2rem', borderRight: i < 2 ? '1px solid rgba(182,147,248,0.15)' : 'none', textAlign:'center' }}>
+            <div key={i} className="stats-cell" style={{ padding:'2.5rem 2rem', borderRight: i < 2 ? '1px solid rgba(182,147,248,0.15)' : 'none', textAlign:'center' }}>
               <Counter {...s} />
             </div>
           ))}
         </div>
 
         {/* Two-column: features + flow diagram */}
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'2rem', alignItems:'stretch' }}>
+        <div className="stats-bottom" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'2rem', alignItems:'stretch' }}>
           {/* Left: feature cards 2x2 */}
-          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1rem' }}>
+          <div className="features-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1rem' }}>
             {features.map(f => (
-              <div key={f.title} style={{ background:'rgba(255,255,255,0.6)', border:`1px solid ${f.color}25`, borderRadius:'20px', padding:'1.5rem', transition:'background 0.3s, box-shadow 0.3s', boxShadow:'0 2px 12px rgba(182,147,248,0.06)' }}
+              <div key={f.title} className="feature-card" style={{ background:'rgba(255,255,255,0.6)', border:`1px solid ${f.color}25`, borderRadius:'20px', padding:'1.5rem', transition:'background 0.3s, box-shadow 0.3s', boxShadow:'0 2px 12px rgba(182,147,248,0.06)' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = `${f.color}12`; (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 24px ${f.color}20` }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.6)'; (e.currentTarget as HTMLElement).style.boxShadow = '0 2px 12px rgba(182,147,248,0.06)' }}
               >
@@ -95,8 +94,6 @@ export default function StatsSection() {
           {/* Right: tri-party flow */}
           <div style={{ background:'rgba(255,255,255,0.65)', border:'1px solid rgba(182,147,248,0.2)', borderRadius:'24px', padding:'2.5rem', display:'flex', flexDirection:'column', justifyContent:'space-between', gap:'1.5rem', backdropFilter:'blur(12px)', WebkitBackdropFilter:'blur(12px)' }}>
             <div style={{ fontSize:'0.75rem', color:'#B693F8', fontWeight:600, letterSpacing:'0.1em', textTransform:'uppercase' }}>平台生态模型</div>
-
-            {/* IP holder */}
             <div style={{ display:'flex', alignItems:'center', gap:'1rem' }}>
               <div style={{ width:'48px', height:'48px', borderRadius:'14px', background:'rgba(182,147,248,0.15)', border:'1px solid rgba(182,147,248,0.25)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'1.25rem', flexShrink:0 }}>🏢</div>
               <div style={{ flex:1 }}>
@@ -105,15 +102,11 @@ export default function StatsSection() {
               </div>
               <div style={{ width:'32px', height:'2px', background:'linear-gradient(90deg,#B693F8,#FF85A1)', borderRadius:'2px', flexShrink:0 }} />
             </div>
-
-            {/* Center - VALUCIA */}
             <div style={{ background:'linear-gradient(135deg,rgba(182,147,248,0.18),rgba(255,133,161,0.12))', border:'1px solid rgba(182,147,248,0.25)', borderRadius:'20px', padding:'1.25rem 1.5rem', textAlign:'center', position:'relative' }}>
               <div style={{ position:'absolute', top:'-1px', left:'50%', transform:'translateX(-50%)', width:'60px', height:'2px', background:'linear-gradient(90deg,#B693F8,#FF85A1)', borderRadius:'2px' }} />
               <div style={{ fontWeight:800, fontSize:'1.1rem', background:'linear-gradient(135deg,#B693F8,#FF85A1)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text', fontFamily:"'AlibabaPuHuiTi','PingFang SC',sans-serif" }}>VALUCIA 平台</div>
               <div style={{ fontSize:'0.78rem', color:'#6E6880', marginTop:'6px', lineHeight:1.5 }}>AI引擎 · 智能授权 · 版权保护 · 数据分润</div>
             </div>
-
-            {/* Merchant */}
             <div style={{ display:'flex', alignItems:'center', gap:'1rem' }}>
               <div style={{ width:'32px', height:'2px', background:'linear-gradient(90deg,#5ECFAB,#5BB8F5)', borderRadius:'2px', flexShrink:0 }} />
               <div style={{ flex:1 }}>
@@ -122,8 +115,6 @@ export default function StatsSection() {
               </div>
               <div style={{ width:'48px', height:'48px', borderRadius:'14px', background:'rgba(94,207,171,0.15)', border:'1px solid rgba(94,207,171,0.25)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'1.25rem', flexShrink:0 }}>🛍️</div>
             </div>
-
-            {/* Bottom quote */}
             <div style={{ borderTop:'1px solid rgba(182,147,248,0.15)', paddingTop:'1.25rem' }}>
               <p style={{ fontSize:'0.8rem', color:'#6E6880', lineHeight:1.6, fontStyle:'italic' }}>
                 &ldquo;我们不只是平台，我们是IP走向世界的数字伙伴&rdquo;
@@ -132,7 +123,19 @@ export default function StatsSection() {
           </div>
         </div>
       </div>
-      <style>{`@media(max-width:768px){section>div>div:last-child{grid-template-columns:1fr!important}}`}</style>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .stats-row { grid-template-columns: 1fr !important; }
+          .stats-cell { border-right: none !important; border-bottom: 1px solid rgba(182,147,248,0.15) !important; padding: 2rem 1.5rem !important; }
+          .stats-cell:last-child { border-bottom: none !important; }
+          .stats-bottom { grid-template-columns: 1fr !important; }
+          .features-grid { grid-template-columns: 1fr 1fr !important; }
+        }
+        @media (max-width: 480px) {
+          .features-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   )
 }
